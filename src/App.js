@@ -57,7 +57,7 @@ const PopularMovie = () => {
                 <Link
                   to={{
                     pathname: `/movie/${dat.id}`,
-                    state: { dat } //pass the data so that you can use it via useLocation
+                    state: { id: data.id } //pass the data so that you can use it via useLocation
                   }}
                 >
                   <img

@@ -4,9 +4,12 @@ import { Nav } from "./App.js";
 
 const MovieDetails = () => {
   let params = useLocation();
-  const { id } = params.state.dat;
+  const id = params.state;
   const [movieDetails, setMovieDetails] = useState([]);
-  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=403829fffc80d8184aa974d631a475c5`;
+  const url =
+    "https://api.themoviedb.org/3/movie/" +
+    id +
+    "?api_key=403829fffc80d8184aa974d631a475c5";
 
   useEffect(() => {
     fetch(url)
@@ -17,16 +20,11 @@ const MovieDetails = () => {
         throw response;
       })
       .then((data) => {
-        const results = data.results;
-        console.log(results);
-        setMovieDetails(results);
+        console.log(data);
+        setMovieDetails(data);
       })
       .catch((error) => {
         console.error("Error fetching Data", error);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   }, []);
 
