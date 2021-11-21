@@ -3,7 +3,7 @@ import "./styles.css";
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-dark bg-primary">
+    <nav className="navbar navbar-dark bg-success">
       <div className="container">
         <a href="#/movie" className="navbar-brand">
           React Movie App
@@ -50,11 +50,11 @@ const PopularMovie = () => {
       <div className="my-3">
         <div className="container">
           <h3>Popular</h3>
-          <div className="d-flex flex-row flex-nowrap overflow-auto mt-3">
+          <div className="d-flex flex-row flex-nowrap overflow-auto mt-3 customScroll">
             {data.map((dat) => (
-              <div key={dat.id} className="">
+              <div key={dat.id} className="me-3" srtyle={{ maxWidth: "250px" }}>
                 <img
-                  className="me-3"
+                  className=""
                   src={"https://image.tmdb.org/t/p/w500" + dat.poster_path}
                   alt="movie poster"
                   style={{ maxWidth: "150px", height: "225px" }}
