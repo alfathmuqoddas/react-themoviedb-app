@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
-const Nav = () => {
+export const Nav = () => {
   return (
     <nav className="navbar navbar-dark bg-success">
       <div className="container">
@@ -52,17 +53,24 @@ const PopularMovie = () => {
           <h3>Popular</h3>
           <div className="d-flex flex-row flex-nowrap overflow-auto mt-3 customScroll">
             {data.map((dat) => (
-              <div key={dat.id} className="me-3" srtyle={{ maxWidth: "250px" }}>
-                <img
-                  className=""
-                  src={"https://image.tmdb.org/t/p/w500" + dat.poster_path}
-                  alt="movie poster"
-                  style={{ maxWidth: "150px", height: "225px" }}
-                />
-                <div className="small text-center">
-                  <p className="m-0">{dat.original_title}</p>
-                  <p className="">{dat.release_date.substring(0, 4)}</p>
-                </div>
+              <div key={dat.id} className="me-3" style={{ maxWidth: "250px" }}>
+                <Link
+                  to={{
+                    pathname: `/movie/${dat.id}`,
+                    state: { dat } //pass the data so that you can use it via useLocation
+                  }}
+                >
+                  <img
+                    className=""
+                    src={"https://image.tmdb.org/t/p/w500" + dat.poster_path}
+                    alt="movie poster"
+                    style={{ maxWidth: "150px", height: "225px" }}
+                  />
+                  <div className="small text-center">
+                    <p className="m-0">{dat.original_title}</p>
+                    <p className="">{dat.release_date.substring(0, 4)}</p>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
